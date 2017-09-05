@@ -9,7 +9,7 @@
 
 from selenium import webdriver
 from selenium.webdriver.support.wait import WebDriverWait
-import os, time, getpass, sys, logging, datetime
+import os, time, getpass, sys, logging, datetime, getopt
 
 logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', level = logging.INFO)
 class QQMailAttachmentDownloader(object):
@@ -92,7 +92,18 @@ class QQMailAttachmentDownloader(object):
         self.browser.switch_to.frame(iframe_name)
 
 if __name__ == '__main__':
+    start_page, end_page = 1, 2
+    opts, args = getopt.getopt(sys.argv[1:], "hs:e:", ["start=", "end="])
+    for opt, arg in opts:
+        if opt == '-h':
+            print('test.py -s [start page] -e <end pag>')
+            sys.exit()
+        elif opt in ("-s", "--start"):
+            start_page = int(arg)
+        elif opt in ("-e", "--end"):
+            end_page = int(arg)
+    
     start_time = datetime.datetime.now()
-    downloader = QQMailAttachmentDownloader(range(9))
+    downloader = QQMailAttachmentDownloader(range(start_page-1, end_page))
     end_time = datetime.datetime.now()
     logging.info("\nDone! Seconds cost:"+str((end_time - start_time).seconds))

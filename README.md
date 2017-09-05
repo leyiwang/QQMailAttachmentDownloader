@@ -10,19 +10,24 @@ This toolkit for QQ mail attachments downloader implemented by python package se
 
 ### Usage
 
+You should download the latest release of [ChromeDriver](https://sites.google.com/a/chromium.org/chromedriver/downloads), and put it in the root directory of the chrome browser.
+
 - Usage
 
   ```shell
-  python Research_Spider.py
+  python QQMailAttachmentDownloader_v3.py -s [start page] -e [end page]
+  paramaters:
+  	-s [start page]:The starting page number of the email inbox 
+  	-e [end page]:The ending page number of the email inbox 
   ```
 
   Execute the script and then input your QQ number and password according the prompts. 
 
 ## Contibutor
 
-Louie Wang
+Leyi Wang
 
-Email: leyiwang.cn@gmail.com(or wangleyi123@yeah.net)
+Email: leyiwang.cn@gmail.com
 
 ## Change History
 
